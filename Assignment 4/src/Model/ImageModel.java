@@ -2,6 +2,8 @@ package Model;
 
 import java.awt.*;
 
+import View.Pixel;
+
 /**
  * define what rules:
  * Load an image from an ASCII PPM file (see below).
@@ -14,41 +16,51 @@ import java.awt.*;
  * using simple text-based scripting (see below).
  **/
 
+
+
+/*
+Design:
+Each method will take in 2 arguments: the source filename and the destination filename
+Each method will make a 2D array of pixels that will be given to the saveImage method
+ */
+
+
 public interface ImageModel {
 
   /**
    * feature 1: Load an image from an ASCII PPM file (see below).
    */
-  public void loadImage(Image image);
+  public void loadImage(String filename);
 
 
   /**
-   * feature 2: Create images that visualize individual R,G,B components of an image.
-   * 2D arrays
+   * 3.2 Text-based scripting: save image-path image-name: S
+   * ave the image with the given name
+   * to the specified path which should include the name of the file.
+   * @param fileName
    */
-  public void visualizeRGB(int[][] colorSettings);
+  public void saveImage(Pixel[][] pixels, String fileName);
 
   /**
-   * feature 3:Create images that visualize the value, intensity or luma of an image as
-   * defined above.
+   * 3.2 Text-based scripting
+   * red-component image-name dest-image-name: Create a greyscale image with
+   * the red-component of the image with the given name, and refer to it henceforth
+   * in the program by the given destination name.
+   * Similar commands for green, blue, value, luma, intensity components should be supported.
+   *
    */
-  public void visualizeValue(int[][] valueSettings);
+  public void redGreyscale(String sourceFilename, String destinationFilename);
+  public void greenGreyscale(String sourceFilename, String destinationFilename);
+  public void blueGreyscale(String sourceFilename, String destinationFilename);
 
+  public void valueGreyscale(String sourceFilename, String destinationFilename);
+  public void intensityGreyscale(String sourceFilename, String destinationFilename);
+  public void lumaGreyscale(String sourceFilename, String destinationFilename);
 
-  /**
-   * feature 4:Flip an image horizontally or vertically.
-   */
-  public void flipHV(int[][] adjustSettings);
+  public void horizontalFlip (String sourceFilename, String destinationFilename);
+  public void verticalFlip(String sourceFilename, String destinationFilename);
+  public void brightenImage(int brightness, String sourceFilename, String destinationFilename);
 
-  /**
-   * feature 5: Brighten or darken an image.
-   */
-  public void Brightness(int[][] brightnessSettings);
-
-  /**
-   * feature 6: Save an image to an ASCII PPM file (see below).
-   */
-  public void saveImage(Image image);
 
 
 }
