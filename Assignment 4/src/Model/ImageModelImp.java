@@ -64,12 +64,6 @@ public class ImageModelImp implements ImageModel {
     }
   }
 
-    // save image-path image-name: Save the image with the given name to the
-    // specified path which should include the name of the file.
-    // need help
-    public void saveImage() {
-
-    }
 
   @Override
   public void saveImage(Pixel[][] pixels, String fileName) {
